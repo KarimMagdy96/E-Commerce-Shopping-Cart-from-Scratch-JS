@@ -9,4 +9,72 @@ const cartContent =document.querySelector('.cart-content')
 const productsDom =document.querySelector('.products-center')
 //my cart
 let cart=[];
+
+//get prodacts
+
+class prodacts{
+ async getProdacts(){
+    try {
+       let data= await fetch("products.json")
+       let result =await data.json()
+       let finalresult= result.items;
+      finalresult=finalresult.map(prodact=>{
+        const {title,price}=prodact.fields;
+        const{id}= prodact.sys
+        let imge = prodact.fields.image.fields.file.url
+        return {title,price,id,imge}
+      })
+        return finalresult
+    } catch (error) {
+
+        console.log(error)
+    }
+ }
+}
+
+ //display prodacts
+
+ class display{
+showdata(prodacts){
+    let showpro='';
+    console.log(prodacts)
+    prodacts.forEach(element => {
+    showpro+=`
+    
+    
+        <article class="product">
+           <div class="img-container">
+            <img src=${element.imge} class="product-img">
+            <button class="bag-btn" data-id=${element.id}>
+                <i class="fa fa-shopping-cart"></i>
+                add to bag
+            </button>
+           </div> 
+           <h3>${element.title}</h3>
+           <h4>${element.price}</h4>
+        </article> 
+    
+    
+    
+    `        
+    });
+    productsDom.innerHTML=showpro;
+}
+ }
+
+ //local storge 
+
+ class storge{
+     
+ }
+
+ document.addEventListener('DOMContentLoaded',()=>{
+    const myprodacts= new prodacts()
+
+    const showmyProdacts = new display()
+
+    //get prodats
+    myprodacts.getProdacts().then(results=>showmyProdacts.showdata(results))
+
+ })
  
