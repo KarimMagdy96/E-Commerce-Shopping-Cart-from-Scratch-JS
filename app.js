@@ -65,7 +65,9 @@ showdata(prodacts){
  //local storge 
 
  class storge{
-     
+    static saveProdact(prodact){
+        localStorage.setItem('prodact',JSON.stringify(prodact))
+    }
  }
 
  document.addEventListener('DOMContentLoaded',()=>{
@@ -74,7 +76,10 @@ showdata(prodacts){
     const showmyProdacts = new display()
 
     //get prodats
-    myprodacts.getProdacts().then(results=>showmyProdacts.showdata(results))
+    myprodacts.getProdacts().then(results=>{
+        showmyProdacts.showdata(results);
+        storge.saveProdact(results);
+    })
 
  })
  
