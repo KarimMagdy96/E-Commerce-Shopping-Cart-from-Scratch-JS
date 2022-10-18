@@ -9,6 +9,7 @@ const cartContent =document.querySelector('.cart-content')
 const productsDom =document.querySelector('.products-center')
 //my cart
 let cart=[];
+let buttonsDom=[]
 
 //get prodacts
 
@@ -62,6 +63,7 @@ showdata(prodacts){
 }
 getbtn(){
     let btns = [...document.querySelectorAll('.bag-btn')]
+    buttonsDom=btns;
     btns=btns.forEach(btn=>{
     let id =btn.dataset.id
     let inCart = cart.find(prodact=>prodact.id==id)
@@ -76,8 +78,8 @@ getbtn(){
         cart=[...cart,cartitems]
         storge.saveCart(cart)
         display.cartValues(cart)
-        this.addCartDom(cartitems)
-        this.showCart()
+        display.addCartDom(cartitems)
+        display.showCart()
     })
 })
 }
@@ -121,7 +123,8 @@ static showCart(){
  this.cartValues(cart);
  this.populate(cart)
  cartbtn.addEventListener('click',display.showCart)
-closeCartBtn.addEventListener('click',display.hideCart)
+ closeCartBtn.addEventListener('click',display.hideCart)
+
 }
 static populate(cart){
     cart.forEach(item=>this.addCartDom(item))
@@ -129,6 +132,20 @@ static populate(cart){
 static hideCart(){
     cartOverlay.classList.remove('transparentBcg')
     cardDom.classList.remove('showCart')
+}
+ static cartLogic(){
+clearCartBtn.addEventListener('click',display.clearCart)
+}
+static clearCart(){
+    let cartItem= cart.map(item=>item.id)
+    cartItem.forEach(id=>display.removeItems(id))
+}
+static removeItems(id){
+    cart= cart.filter(items=>items.id != id)
+    display.cartValues(cart);
+    storge.saveCart(cart)
+
+
 }
  }
 
@@ -164,6 +181,7 @@ static hideCart(){
         storge.saveProdact(results);
     }).then(()=>{
         showmyProdacts.getbtn()
+        display.cartLogic()
     })
 
  })
