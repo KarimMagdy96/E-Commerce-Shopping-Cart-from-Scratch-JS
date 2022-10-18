@@ -60,6 +60,14 @@ showdata(prodacts){
     });
     productsDom.innerHTML=showpro;
 }
+getbtn(){
+    let btns = [...document.querySelectorAll('.bag-btn')]
+console.log(btns)
+btns=btns.forEach(btn=>{
+    let id =btn.dataset.id
+    console.log(id)
+})
+}
  }
 
  //local storge 
@@ -79,6 +87,8 @@ showdata(prodacts){
     myprodacts.getProdacts().then(results=>{
         showmyProdacts.showdata(results);
         storge.saveProdact(results);
+    }).then(()=>{
+        showmyProdacts.getbtn()
     })
 
  })
