@@ -62,10 +62,18 @@ showdata(prodacts){
 }
 getbtn(){
     let btns = [...document.querySelectorAll('.bag-btn')]
-console.log(btns)
-btns=btns.forEach(btn=>{
+    btns=btns.forEach(btn=>{
     let id =btn.dataset.id
-    console.log(id)
+    let inCart = cart.find(prodact=>prodact.id==id)
+    if(inCart){
+        btn.innerHTML='In Cart'
+        btn.disabled= true
+    }
+    btn.addEventListener('click',event=>{
+        event.target.innerHTML='In Cart';
+        event.target.disabled=true;
+    })
+    storge.selectProdact(id)
 })
 }
  }
@@ -75,6 +83,9 @@ btns=btns.forEach(btn=>{
  class storge{
     static saveProdact(prodact){
         localStorage.setItem('prodact',JSON.stringify(prodact))
+    }
+    static selectProdact(id){
+        let prodact= localStorage.getItem()
     }
  }
 
