@@ -72,8 +72,11 @@ getbtn(){
     btn.addEventListener('click',event=>{
         event.target.innerHTML='In Cart';
         event.target.disabled=true;
+        let cartitems={...storge.selectProdact(id),amount:1}
+        cart=[...cart,cartitems]
+        
+        console.log(cart)
     })
-    storge.selectProdact(id)
 })
 }
  }
