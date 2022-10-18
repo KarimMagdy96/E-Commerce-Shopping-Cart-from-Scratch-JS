@@ -1,5 +1,5 @@
 const cartbtn =document.querySelector('.cart-btn');
-const closeCartBtn =document.querySelector('.closer-cart')
+const closeCartBtn =document.querySelector('.close-cart')
 const clearCartBtn =document.querySelector('.clear-cart')
 const cardDom =document.querySelector('.cart')
 const cartOverlay =document.querySelector('.cart-overlay')
@@ -75,8 +75,60 @@ getbtn(){
         let cartitems={...storge.selectProdact(id),amount:1}
         cart=[...cart,cartitems]
         storge.saveCart(cart)
+        display.cartValues(cart)
+        this.addCartDom(cartitems)
+        this.showCart()
     })
 })
+}
+static cartValues(cart){
+    console.log(cart)
+ let totalAmount=0;
+ let itemsCount=0
+ cart.map(item=>{
+    totalAmount += item.price * item.amount;
+    itemsCount+=item.amount
+})
+cartItems.innerText=itemsCount;
+cartTotal.innerText= parseFloat(totalAmount.toFixed(2));
+}
+ static addCartDom(item){
+  let div=  document.createElement('div');
+  div.classList.add('cart-item')
+  div.innerHTML =`
+  
+  <img src=${item.imge} alt="prodact">
+  <div>
+  <h4>${item.title}</h4>
+  <h5>${item.price}$</h5>
+  <span class="remove-item">remove</span>
+  </div>
+  <div>
+  <i class="fa fa-chevron-up"></i>
+  <p class="item-amount">${item.amount}</p>
+  <i class="fa fa-chevron-down"></i>
+  </div>
+  `
+  cartContent.appendChild(div)
+  console.log(cartContent)
+}
+static showCart(){
+    cartOverlay.classList.add('transparentBcg')
+    cardDom.classList.add('showCart')   
+}
+ static setupApp(){
+ cart = storge.cheakcart();
+ this.cartValues(cart);
+ this.populate(cart)
+ cartbtn.addEventListener('click',display.showCart)
+closeCartBtn.addEventListener('click',display.hideCart)
+}
+static populate(cart){
+    cart.forEach(item=>this.addCartDom(item))
+}
+static hideCart(){
+    cartOverlay.classList.remove('transparentBcg')
+    cardDom.classList.remove('showCart')
 }
  }
 
@@ -94,12 +146,17 @@ getbtn(){
     static saveCart(cart){
        localStorage.setItem('cart',JSON.stringify(cart)) 
     }
+    static cheakcart(){
+        return localStorage.getItem('cart')? JSON.parse(localStorage.cart):[];
+    }
  }
 
  document.addEventListener('DOMContentLoaded',()=>{
     const myprodacts= new prodacts()
 
     const showmyProdacts = new display()
+
+    display.setupApp();
 
     //get prodats
     myprodacts.getProdacts().then(results=>{
