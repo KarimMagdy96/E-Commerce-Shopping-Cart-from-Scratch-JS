@@ -74,8 +74,7 @@ getbtn(){
         event.target.disabled=true;
         let cartitems={...storge.selectProdact(id),amount:1}
         cart=[...cart,cartitems]
-        
-        console.log(cart)
+        storge.saveCart(cart)
     })
 })
 }
@@ -91,6 +90,9 @@ getbtn(){
         let prodacts= JSON.parse(localStorage.getItem("prodact"));
         return prodacts.find(prodact=>prodact.id==id)
 
+    }
+    static saveCart(cart){
+       localStorage.setItem('cart',JSON.stringify(cart)) 
     }
  }
 
