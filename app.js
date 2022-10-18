@@ -85,7 +85,7 @@ getbtn(){
         localStorage.setItem('prodact',JSON.stringify(prodact))
     }
     static selectProdact(id){
-        let prodact= localStorage.getItem()
+        let prodact= localStorage.getItem('prodact')
     }
  }
 
