@@ -15,10 +15,12 @@ It's a project focused on JavaScript fundamentals we can select products to be a
   <img src="https://i.imgur.com/qC0x5bC.png" alt="screenshot" />
 </div>
 
-### Dependencies:-
+### Dependencies:
+
 * Html
 * Css
 * Js
 
 #### Live Preview 
-[Comfy Home](https://comfy-house096.netlify.app/)
+
+[COMFY HOUSE](https://comfy-house096.netlify.app/)
