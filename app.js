@@ -135,17 +135,31 @@ static hideCart(){
 }
  static cartLogic(){
 clearCartBtn.addEventListener('click',display.clearCart)
+
+cartContent.addEventListener('click',event=>{
+    console.log(event.target)
+}
+)
 }
 static clearCart(){
     let cartItem= cart.map(item=>item.id)
     cartItem.forEach(id=>display.removeItems(id))
+    while(cartContent.children.length>0){
+    cartContent.removeChild(cartContent.children[0])
+    }
+    display.hideCart()
 }
 static removeItems(id){
     cart= cart.filter(items=>items.id != id)
     display.cartValues(cart);
     storge.saveCart(cart)
+      let button = this.getSinagleButton(id);
+      button.disabled=false;
+      button.innerHTML=`<li class='fa fa-shopping-cart'></li> add to cart`
 
-
+}
+static getSinagleButton(id){
+    return buttonsDom.find(button=>button.dataset.id == id)
 }
  }
 
