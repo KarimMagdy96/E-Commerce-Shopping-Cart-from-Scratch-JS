@@ -103,12 +103,12 @@ cartTotal.innerText= parseFloat(totalAmount.toFixed(2));
   <div>
   <h4>${item.title}</h4>
   <h5>${item.price}$</h5>
-  <span class="remove-item">remove</span>
+  <span class="remove-item" data-id=${item.id}>remove</span>
   </div>
   <div>
-  <i class="fa fa-chevron-up"></i>
+  <i class="fa fa-chevron-up" data-id=${item.id}></i>
   <p class="item-amount">${item.amount}</p>
-  <i class="fa fa-chevron-down"></i>
+  <i class="fa fa-chevron-down" data-id=${item.id}></i>
   </div>
   `
   cartContent.appendChild(div)
@@ -137,7 +137,37 @@ static hideCart(){
 clearCartBtn.addEventListener('click',display.clearCart)
 
 cartContent.addEventListener('click',event=>{
-    console.log(event.target)
+    if(event.target.classList.contains('remove-item')){
+        let removeItem=event.target;
+        console.log(removeItem.dataset)
+        let itemId= removeItem.dataset.id;
+        cartContent.removeChild(removeItem.parentElement.parentElement)
+        this.removeItems(itemId);
+    }
+    else if(event.target.classList.contains('fa-chevron-up')){
+        let add= event.target
+        let addId= add.dataset.id
+        let tempItem=cart.find(item=>item.id===addId );
+        tempItem.amount=tempItem.amount+1
+        storge.saveCart(cart)
+        display.cartValues(cart)
+        add.nextElementSibling.innerHTML=tempItem.amount
+    }
+    else if(event.target.classList.contains('fa-chevron-down')){
+           let down= event.target
+        let downId= down.dataset.id
+        let tempItem=cart.find(item=>item.id===downId);
+        tempItem.amount=tempItem.amount-1
+        if(tempItem.amount>0){
+        storge.saveCart(cart)
+        display.cartValues(cart)
+        down.previousElementSibling.innerHTML=tempItem.amount
+        }else{
+            cartContent.removeChild(down.parentElement.parentElement)
+            this.removeItems(downId) 
+        }
+       
+    }
 }
 )
 }
@@ -150,16 +180,16 @@ static clearCart(){
     display.hideCart()
 }
 static removeItems(id){
-    cart= cart.filter(items=>items.id != id)
+    cart= cart.filter(items=>items.id !== id)
     display.cartValues(cart);
     storge.saveCart(cart)
-      let button = this.getSinagleButton(id);
-      button.disabled=false;
-      button.innerHTML=`<li class='fa fa-shopping-cart'></li> add to cart`
+      let buttons = display.getSinagleButton(id);
+      buttons.disabled=false;
+      buttons.innerHTML=`<li class='fa fa-shopping-cart'></li> add to cart`;
 
 }
 static getSinagleButton(id){
-    return buttonsDom.find(button=>button.dataset.id == id)
+    return buttonsDom.find(button=>button.dataset.id ===id)
 }
  }
 
