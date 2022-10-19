@@ -9,5 +9,5 @@ E-Commerce-Shopping-Cart-from-Scratch-JS  E-Commerce Shopping Cart It's a projec
 * Css
 * Js
 
-#### live preview 
+#### Live Preview 
 [Comfy Home](https://comfy-house096.netlify.app/)
