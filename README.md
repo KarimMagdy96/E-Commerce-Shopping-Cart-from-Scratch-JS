@@ -21,9 +21,9 @@ A responsive mobile-first vanilla javascript e-commerce website which;
 
 ### Dependencies:
 
-* Html
-* Css
-* Js
+* HTML
+* CSS
+* vanilla JS (ES6)
 
 #### Live Preview 
 
