@@ -23,7 +23,7 @@ A responsive mobile-first vanilla javascript e-commerce website which;
 
 * HTML
 * CSS
-* vanilla JS (ES6)
+* Vanilla JS (ES6)
 
 #### Live Preview 
 
