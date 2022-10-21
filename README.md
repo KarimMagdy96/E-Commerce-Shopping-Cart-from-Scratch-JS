@@ -18,6 +18,9 @@ A responsive mobile-first vanilla javascript e-commerce website which;
 <div align="center"> 
   <img src="https://i.imgur.com/qC0x5bC.png" alt="screenshot" />
 </div>
+<div align="center"> 
+  <img src="https://imgur.com/oQkzAnW" alt="screenshot" />
+</div>
 
 ### Dependencies:
 
