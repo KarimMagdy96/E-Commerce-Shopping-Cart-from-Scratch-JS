@@ -18,7 +18,9 @@ A responsive mobile-first vanilla javascript e-commerce website which;
 <div align="center"> 
   <img src="https://i.imgur.com/qC0x5bC.png" alt="screenshot" />
 </div>
-![s](http://www.reactiongifs.us/wp-content/uploads/2013/10/nuh_uh_conan_obrien.gif)
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+
 
 ### Dependencies:
 
