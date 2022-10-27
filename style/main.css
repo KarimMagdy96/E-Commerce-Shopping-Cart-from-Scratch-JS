@@ -69,7 +69,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
   min-height: 100vh;
   background: url("../images/hero.jpg") center/cover no-repeat;
   background-size: cover;
-  background-position: top 100%;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
