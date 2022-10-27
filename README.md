@@ -16,7 +16,7 @@ A responsive mobile-first vanilla javascript e-commerce website which;
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="https://i.imgur.com/qC0x5bC.png" alt="screenshot" />
+  <img src="https://i.imgur.com/ksgUpT2.png" alt="screenshot" />
 </div>
 
 ### Dependencies:
