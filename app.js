@@ -40,7 +40,7 @@ showdata(prodacts){
     let showpro='';
     console.log(prodacts)
     prodacts.forEach(element => {
-    showpro+=`
+    showpro += `
     
     
         <article class="product">
@@ -55,9 +55,7 @@ showdata(prodacts){
            <h4>${element.price}</h4>
         </article> 
     
-    
-    
-    `        
+    `;        
     });
     productsDom.innerHTML=showpro;
 }
@@ -139,7 +137,6 @@ clearCartBtn.addEventListener('click',display.clearCart)
 cartContent.addEventListener('click',event=>{
     if(event.target.classList.contains('remove-item')){
         let removeItem=event.target;
-        console.log(removeItem.dataset)
         let itemId= removeItem.dataset.id;
         cartContent.removeChild(removeItem.parentElement.parentElement)
         this.removeItems(itemId);
@@ -171,6 +168,7 @@ cartContent.addEventListener('click',event=>{
 }
 )
 }
+
 static clearCart(){
     let cartItem= cart.map(item=>item.id)
     cartItem.forEach(id=>display.removeItems(id))
@@ -229,4 +227,5 @@ static getSinagleButton(id){
     })
 
  })
- 
+
+//regex to capitalize all letters after spaces in string?

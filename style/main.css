@@ -15,19 +15,28 @@
 }
 body {
   color: var(--mainBlack);
-  background: var(--mainWhite);
+  background: white;
   font-family: "Lato", sans-serif;
 }
 /* --------------- Navbar ---------------- */
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
-  background: rgb(231, 226, 221);
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 1;
+}
+.store-logo{
+  width: 20%;
 }
 .navbar-center {
   width: 100%;
@@ -49,7 +58,7 @@ body {
   position: absolute;
   top: -8px;
   right: -8px;
-  background: var(--primaryColor);
+  background: tomato;
   padding: 0 5px;
   border-radius: 30%;
   color: var(--mainWhite);
@@ -57,15 +66,23 @@ body {
 /* --------------- End of Navbar ---------------- */
 /* --------------- Hero ---------------- */
 .hero {
-  min-height: calc(100vh - 60px);
-  background: url("./images/hero-bcg.jpeg") center/cover no-repeat;
+  min-height: 100vh;
+  background: url("../images/hero.jpg") center/cover no-repeat;
+  background-size: cover;
+  background-position: top 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .banner {
   text-align: center;
-  background: rgba(255, 255, 255, 0.8);
+ /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
   display: inline-block;
   padding: 2rem;
 }
@@ -80,15 +97,16 @@ body {
   text-transform: uppercase;
   letter-spacing: var(--mainSpacing);
   font-size: 1rem;
-  background: var(--primaryColor);
-  color: var(--mainBlack);
-  border: 1px solid var(--primaryColor);
+  background: tomato;
+  color: #fff;
+  border: 1px solid transparent;
   transition: var(--mainTransition);
   cursor: pointer;
 }
 .banner-btn:hover {
   background: transparent;
-  color: var(--primaryColor);
+  border: 1px solid tomato;
+  color: black;
 }
 /* --------------- End of Hero ---------------- */
 /* --------------- Products ---------------- */
@@ -120,7 +138,7 @@ body {
   position: absolute;
   top: 70%;
   right: 0;
-  background: var(--primaryColor);
+  background:tomato;
   border: none;
   text-transform: uppercase;
   padding: 0.5rem 0.75rem;
@@ -128,10 +146,11 @@ body {
   font-weight: bold;
   transition: var(--mainTransition);
   transform: translateX(101%);
+  color: white;
   cursor: pointer;
 }
 .bag-btn:hover {
-  color: var(--mainWhite);
+  color: white;
 }
 .fa-shopping-cart {
   margin-right: 0.5rem;
@@ -142,7 +161,9 @@ body {
 .product-img {
   display: block;
   width: 100%;
-  min-height: 12rem;
+  min-height: 250px;
+  border-radius: 10px;
+
   transition: var(--mainTransition);
 }
 .img-container:hover .product-img {
@@ -160,24 +181,30 @@ body {
 .product h4 {
   margin-top: 0.7rem;
   letter-spacing: var(--mainSpacing);
-  color: var(--primaryColor);
+  color: tomato;
   text-align: center;
 }
 
 /* ---------------End of Products ---------------- */
 /* --------------- Cart ---------------- */
-.cart-overlay {
+ .cart-overlay {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   height: 100%;
   transition: var(--mainTransition);
-  background: rgb(240, 157, 81, 0.5);
+ /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3.1px);
+-webkit-backdrop-filter: blur(3.1px);
+border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 2;
   visibility: hidden;
-}
-.cart {
+} 
+ .cart {
   position: fixed;
   top: 0;
   right: 0;
@@ -185,11 +212,11 @@ body {
   height: 100%;
   overflow: scroll;
   z-index: 3;
-  background: rgb(231, 226, 221);
+  background:#e3e6f3;
   padding: 1.5rem;
   transition: var(--mainTransition);
   transform: translateX(100%);
-}
+} 
 .showCart {
   transform: translateX(0);
 }
@@ -243,7 +270,7 @@ body {
 }
 .fa-chevron-up,
 .fa-chevron-down {
-  color: var(--primaryColor);
+  color: tomato;
   cursor: pointer;
 }
 /*---------- End of Cart Item -------------------- */
